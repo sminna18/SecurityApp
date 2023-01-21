@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/styles/css/style.css"/>
     <title>Admin page</title>
 </head>
 <body>
-Admin page
+<div class=auth>
+    <a href="/myProfile" >
+        <img  src="/styles/css/home.png" width="30" height="30" alt="Home">
+    </a>
+    <h2 class=auth-title>Admin page</h2>
+    <div th:each="person : ${people}">
+        <a>id:</a>
+        <a th:text="${person.getId()}">user</a>
+        <a>(</a>
+        <a th:text="${person.getUsername()}">user</a>
+        <a>)</a>
+
+        <a th:if="${person.getRole() == 'ROLE_USER'}" th:href="@{/admin/ban/{id}(id=${person.getId()})}">Ban</a>
+    </div>
+</div>
 </body>
 </html>

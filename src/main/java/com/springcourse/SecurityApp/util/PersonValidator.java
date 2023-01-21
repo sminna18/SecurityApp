@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.util.Optional;
+
 @Component
 public class PersonValidator implements Validator {
 
@@ -33,6 +35,6 @@ public class PersonValidator implements Validator {
             return;
         }
 
-        errors.rejectValue("username", "", "Человек с таким именем пользователя уже сушествует ");
+        errors.rejectValue("username", "", "An account with this username already exists");
     }
 }

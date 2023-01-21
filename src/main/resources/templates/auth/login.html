@@ -2,27 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel=stylesheet href="/styles/css/style.css">
     <title>Login page</title>
 </head>
 <body>
 
-<form name="f" method="post" action="/process_login">
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-    <label for="username">Введите имя пользователя: </label>
-    <input type="text" name="username" id="username"/>
-    <br/>
-    <label for="password">Ввведите пароль</label>
-    <input type="password" name="password" id="password"/>
-    <br/>
-    <input type="submit" value="Login"/>
-
-    <div th:if="${param.error}"style="color: red">
-        Неправильные имя и пароль
-    </div>
-
-    <br/>
-    <a href="/auth/registration">Registration</a>
-</form>
-
+<div class=auth>
+    <a href="/auth/login" >
+        <img  src="/styles/css/home.png" width="30" height="30" alt="Home">
+    </a>
+    <h2 class=auth-title>Sign in</h2>
+    <form name="f" method="post" action="/process_login">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <label for="username">Username </label>
+        <br/>
+        <input type="text" name="username" id="username"/>
+        <br/>
+        <label for="password">Password</label>
+        <br/>
+        <input type="password" name="password" id="password"/>
+        <br/>
+        <br/>
+        <input class="btn" type="submit" value="Login"/>
+        <div th:if="${param.error}" style="color: red">
+            <br/>
+            Incorrect username or password.
+        </div>
+        <br/><br/>
+        <a class="btn" href="/auth/registration">Registration</a>
+    </form>
+</div>
 </body>
 </html>

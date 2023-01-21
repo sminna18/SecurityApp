@@ -2,14 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel=stylesheet href="/styles/css/style.css">
     <title>My profile</title>
 </head>
 <body>
-My profile
-<br/>
-<br/>
-<form th:action="@{/logout}" th:method="POST">
-    <input type="submit" value="Logout"/>
-</form>
+<div class=auth>
+    <a href="/myProfile" >
+        <img  src="/styles/css/home.png" width="30" height="30" alt="Home">
+    </a>
+    <h2 class=auth-title>Home page</h2>
+    <h4 th:text="${person.getUsername()}">VALUE</h4>
+    id:
+    <nobr th:text="${person.getId()}">VALUE</nobr>
+    <br>
+    Year of birth:
+    <nobr th:text="${person.getYearOfBirth()}">VALUE</nobr>
+    <br><br>
+    <form th:action="@{/logout}" th:method="POST">
+        <input class="btn" type="submit" value="Logout"/>
+    </form>
+    <span th:if="${person.getRole()} == 'ROLE_ADMIN'">
+    <br>
+    <a class="btn" href="/admin">Admin panel</a>
+        </span>
+
+</div>
 </body>
 </html>
